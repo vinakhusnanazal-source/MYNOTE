@@ -9,32 +9,168 @@ body {
   background: #f6fff8;
   color: #1b4332;
 }
-/* ===== NAVBAR ===== */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, #1b4332, #40916c);
+
+html {
+  scroll-behavior: smooth;
 }
 
-/* LOGO */
+/* ===== NAVBAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1b4332, #40916c);
+}
+
 .logo {
-    color: white;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: white;
 }
 
 .brand {
-    font-weight: 700;
-    font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .tagline {
-    font-size: 0.75rem;
-    opacity: 0.85;
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
+
+/* ===== BUTTON ===== */
+.menu-btn {
+  background: #0b2e21;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown-content {
+  position: fixed;
+  top: 90px;
+  left: 16px;
+  right: 16px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  display: none;
+  max-height: 60vh;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: #1b4332;
+  border-bottom: 1px solid #eee;
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 8%;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #74c69d, #b7e4c7);
+  padding: 3rem;
+  border-radius: 20px;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* ===== MATERI ===== */
+.materi {
+  padding: 3rem 8%;
+}
+
+.materi-card {
+  background: #e9fdf0;
+  border-left: 6px solid #52b788;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  scroll-margin-top: 120px;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  background: #2d6a4f;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.4rem;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1b4332;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero-card {
+    padding: 2rem;
+  }
+
+  .materi {
+    padding: 2rem 1rem;
+  }
+}}
 
 /* BUTTON */
 .menu-btn {

@@ -15,9 +15,9 @@
 
 <!-- ============ NAVBAR ============ -->
 <nav class="navbar">
-  <div class="logo">Vynara 🌿</div>
+  <div class="logo">Vynara 🌿| Crescens Anima</div>
 
-  <button class="menu-btn" id="menuBtn">☰ Materi</button>
+  <button class="menu-btn" id="menuBtn">≡ Materi</button>
 
   <div class="dropdown-content" id="dropdownMenu">
     <a href="#m1">Pengantar & Ketidakpastian</a>
@@ -26,7 +26,6 @@
     <a href="#m4">Kejadian Gabungan</a>
     <a href="#m5">Probabilitas Bersyarat</a>
     <a href="#m6">Teorema Bayes</a>
-    <a href="#m7">Review Akhir</a>
   </div>
 </nav>
 
@@ -175,27 +174,28 @@
           }
     });
 </script>
-</script>
 <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const dropdown = document.getElementById("dropdownMenu");
+    document.addEventListener("DOMContentLoaded", function () {
+          const menuBtn = document.getElementById("menuBtn");
+          const dropdown = document.getElementById("dropdownMenu");
 
-    menuBtn.addEventListener("click", () => {
-          dropdown.classList.toggle("show");
-    });
-
-    // tutup menu setelah klik item
-    dropdown.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-                  dropdown.classList.remove("show");
+          menuBtn.addEventListener("click", function () {
+                  dropdown.classList.toggle("show");
           });
-    });
 
-    // tutup jika klik di luar menu
-    document.addEventListener("click", (e) => {
-          if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                  dropdown.classList.remove("show");
-          }
+          // tutup setelah klik menu
+          dropdown.querySelectorAll("a").forEach(link => {
+                  link.addEventListener("click", () => {
+                            dropdown.classList.remove("show");
+                  });
+          });
+
+          // klik di luar = tutup
+          document.addEventListener("click", (e) => {
+                  if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                            dropdown.classList.remove("show");
+                  }
+          });
     });
 </script>
 </script>

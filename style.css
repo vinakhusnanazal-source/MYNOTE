@@ -74,7 +74,24 @@ body {
 .dropdown-content.show {
   display: block;
 }
+/* ITEM DROPDOWN (INI YANG MEMPERBAIKI SUSUNAN) */
+.dropdown-content a {
+  display: block;                 /* KUNCI UTAMA */
+  padding: 0.9rem 1.1rem;
+  text-decoration: none;
+  color: #1b4332;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border-bottom: 1px solid #eee;
+}
 
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background: #d8f3dc;
+}
 /* ===== HERO ===== */
 .hero {
     display: flex;

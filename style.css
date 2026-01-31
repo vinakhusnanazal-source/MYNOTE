@@ -63,7 +63,29 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+/* sembunyikan checkbox */
+#toggle-menu {
+  display: none;
+}
 
+/* dropdown default tersembunyi */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background: white;
+  width: 280px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* tampil saat diklik */
+#toggle-menu:checked + .dropbtn + .dropdown-content {
+  display: block;
+}
 /* ===== HERO ===== */
 .hero {
   display: flex;

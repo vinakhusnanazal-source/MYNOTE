@@ -406,28 +406,13 @@ footer small {
   display: flex;
   justify-content: flex-end; /* kiri & kanan */
   align-items: center;
-  gap: 1rem:
-.nav-bawah {
-  display: flex;
-  justify-content: space-between;
+    
+  gap: 1.5rem;
+
   margin-top: 1rem !important;    /* dekat card terakhir */
-  margin-bottom: 1.2rem;            /* ruang kosong di BAWAH tombol */
+  margin-bottom: 3rem;            /* ruang kosong di BAWAH tombol */
 
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-
-  .materi-card:last-child {
-    margin-bottom: 0 !important;
-  }
-
-  .nav-bawah {
-    margin-top: 0 !important;
-    margin-bottom: 1.5rem;  /* ruang aman dari bottom layar */
-  }
+  padding: 0;
 }
 /* kiri */
 .nav-left {
@@ -438,6 +423,19 @@ footer small {
 .nav-right {
       margin-left: auto;
 }
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .materi-card:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .nav-bawah {
+    margin-top: 0 !important;
+    margin-bottom: 3.5rem;  /* ruang aman dari bottom layar */
+  }
+}
+
 .table-wrapper {
       width: 100%;
       max-width: 100%;

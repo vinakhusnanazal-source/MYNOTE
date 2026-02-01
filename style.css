@@ -81,10 +81,15 @@ body {
 
 @media (max-width: 768px) {
   /* bikin konten terasa full */
+  body {
+    overflow-x: hidden; /* cegah scroll & zoom aneh */
+  }
+
   .hero,
-  .materi {
-      padding-left: 5%;
-      padding-right: 5%;
+  .materi,
+  .nav-bawah {
+    padding-left: 4%;
+    padding-right: 4%;
   }
 
   /* hero card full-width visual */
@@ -345,13 +350,13 @@ footer small {
       box-shadow: 0 14px 28px rgba(0,0,0,0.12);
 }
 /* rapikan jarak akhir materi */
+/* hentikan ruang berlebih di akhir materi */
 .materi {
-    padding-bottom: 1.5rem; /* sebelumnya 3rem */
+  padding-bottom: 0;
 }
 
-/* pastikan card terakhir benar-benar dekat */
 .materi-card:last-child {
-    margin-bottom: 0.8rem;
+  margin-bottom: 0;
 }
 .nav-bawah {
       display: flex;
@@ -360,7 +365,15 @@ footer small {
       margin-top: 1rem;
       margin-buttom: 1.5rem;
 }
+.nav-bawah {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 
+  padding: 1.2rem 8%;
+  margin-top: 0.8rem;
+  margin-bottom: 2rem;
+}
 /* kiri */
 .nav-left {
       margin-right: auto;

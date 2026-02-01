@@ -177,7 +177,26 @@ window.addEventListener("scroll", () => {
   backToTop.classList.toggle("show", window.scrollY > 300);
 });
 </script>
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  const footer = document.getElementById("footer");
 
+  window.addEventListener("scroll", () => {
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (footerRect.top < windowHeight) {
+            // footer mulai terlihat
+            backToTopBtn.style.position = "absolute";
+            backToTopBtn.style.bottom =
+                    footer.offsetHeight + 20 + "px";
+      } else {
+            // normal
+            backToTopBtn.style.position = "fixed";
+            backToTopBtn.style.bottom = "30px";
+      }
+  });
+</script>
 <!-- DROPDOWN SCRIPT (FINAL) -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {

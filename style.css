@@ -399,7 +399,7 @@ footer small {
 }
 
 .materi-card:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0.8rem;
 }
 .nav-bawah {
       display: flex;
@@ -413,9 +413,16 @@ footer small {
   justify-content: flex-end;
   gap: 1rem;
 
-  padding: 1.2rem 8%;
-  margin-top: 0.8rem;
-  margin-bottom: 2rem;
+  padding-top: 0;
+  margin-top: 0;
+@media (max-width: 768px) {
+  .materi-card:last-child {
+    margin-bottom: 0.8rem;
+  }
+
+  .nav-bawah {
+    padding-bottom: 1rem;  /* ruang aman dari bottom layar */
+  }
 }
 /* kiri */
 .nav-left {

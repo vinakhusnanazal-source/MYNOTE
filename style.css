@@ -109,6 +109,49 @@ body {
               padding: 1rem 5%;      /* lebih pinggir */
       }
 }
+
+/* ===== FIX FULL WIDTH MOBILE (FINAL) ===== */
+@media (max-width: 768px) {
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* lepas semua pembatas lebar */
+  section,
+  .materi,
+  .hero,
+  .nav-bawah {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* ganti padding persen → rem */
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .materi {
+    padding: 1.5rem 1rem;
+  }
+
+  .nav-bawah {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+      .materi-card {
+              padding: 1.25rem;
+              border-radius: 14px;
+      }
+}
   .menu-btn {
     padding: 0.65rem 1.6rem;
     font-size: 0.9rem;
@@ -384,11 +427,12 @@ footer small {
       margin-left: auto;
 }
 .table-wrapper {
-  width: 100%;
-  overflow-x: auto;     /* biar bisa geser kalau perlu */
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
 }
 
 table {
-  width: 100%;          /* paksa full container */
-  border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;   /* ⬅️ penting */
 }

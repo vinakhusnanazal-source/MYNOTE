@@ -33,6 +33,7 @@ body {
 .nav-action {
       display: flex;
       justify-content: flex-end;
+      width: 100%;
 }
 
 /* khusus halaman materi */
@@ -59,14 +60,44 @@ body {
 
 /* BUTTON */
 .menu-btn {
-    background: #1b4332;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    cursor: pointer;
+      background: #1b4332;
+      color: white;
+
+      padding: 0.7rem 1.8rem;      /* ⬅️ ukuran FINAL */
+      font-size: 0.95rem;
+      font-weight: 500;
+
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+
+      display: inline-flex;        /* ⬅️ penting untuk konsistensi */
+      align-items: center;
+      justify-content: center;
+
+      min-width: 170px;
+      height: 42px;
+      white-space: nowrap;         /* teks tidak turun */
 }
+
+@media (max-width: 768px) {
+
+      /* khusus halaman materi */
+      .nav-action .menu-btn {
+              margin-right: 0;        /* reset desktop */
+              margin-left: auto;     /* dorong ke kanan */
+      }
+
+      /* opsional: navbar lebih lega di HP */
+      .navbar {
+              padding: 1rem 5%;      /* lebih pinggir */
+      }
+}
+  .menu-btn {
+    padding: 0.65rem 1.6rem;
+    font-size: 0.9rem;
+  }
+
 .menu-btn,
 .menu-btn:link,
 .menu-btn:visited,
@@ -165,7 +196,7 @@ footer small {
 /* ===== BACK TO TOP ===== */
 .back-to-top {
     position: fixed;
-    bottom: 30px;
+    bottom: 80px;
     right: 30px;
     width: 48px;
     height: 48px;
@@ -302,12 +333,15 @@ footer small {
       transform: translateY(-4px);
       box-shadow: 0 14px 28px rgba(0,0,0,0.12);
 }
-
+.materi-card:last-child {
+      margin-bottom: 1.2rem;   /* ⬅️ lebih dekat ke tombol */
+}
 .nav-bawah {
       display: flex;
       justify-content: space-between; /* KIRI & KANAN */
   align-items: center;
-      margin: 3rem 0 1rem;
+      margin-top: 1rem;
+      margin-buttom: 2rem;
 }
 
 /* kiri */

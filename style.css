@@ -145,11 +145,17 @@ body {
     padding: 1rem;
   }
 }
+.materi-card {
+  margin-bottom: 2rem;
+}
 
 @media (max-width: 768px) {
       .materi-card {
               padding: 1.25rem;
               border-radius: 14px;
+      }
+       .materi-card {
+              margin-bottom: 2.2rem;
       }
 }
   .menu-btn {

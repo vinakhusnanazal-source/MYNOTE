@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pengantar Probabilitas & Ketidakpastian</title>
+  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+
+<body id="top">
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo">
+      <span class="brand">Vynara 🌿</span>
+      <span class="tagline">Crescens Anima</span>
+  </div>
+
+   <div class="nav-action">
+    <a href="../index.html" class="menu-btn">≡ Daftar Materi</a>
+  </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<section class="hero">
+  <div class="hero-card">
+      <h1>Ruang Sampel dan Kejadian</h1>
+  </div>
+</section>
+  
+<section class="materi">
+
+  <!-- Pendahuluan -->
+  <div class="materi-card">
+    <h2>🧭 Pendahuluan Singkat</h2>
+    <p>
+      Probabilitas adalah ilmu tentang ketidakpastian. Setiap hari kita berhadapan dengan ketidakpastian:
+    </p>
+    <ul>
+      <li>Apakah hujan sore ini?</li>
+      <li>Apakah kita menang undian?</li>
+      <li>Apakah bus datang tepat waktu?</li>
+    </ul>
+    <p>
+      Di balik semua pertanyaan itu, ada struktur matematika yang rapi. Struktur paling dasar itulah
+      yang akan kita pelajari hari ini:
+      <br><strong>👉 Percobaan Acak, Ruang Sampel, dan Kejadian.</strong>
+    </p>
+  </div>
+
+  <!-- Tujuan Pembelajaran -->
+  <div class="materi-card">
+    <h2>🎯 Tujuan Pembelajaran & Gambaran Besar</h2>
+    <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+    <ul>
+      <li>Memahami apa itu percobaan acak</li>
+      <li>Menyusun ruang sampel (diskrit & kontinu)</li>
+      <li>Menentukan kejadian sederhana dan majemuk</li>
+      <li>Melakukan operasi pada kejadian</li>
+      <li>Menggunakan diagram Venn untuk merepresentasikan kejadian</li>
+    </ul>
+
+    <p><strong>Gambaran besar:</strong></p>
+    <p>
+      Semua perhitungan probabilitas selalu dimulai dari ruang sampel dan kejadian.
+      Jika fondasi ini kuat, materi lanjutan akan terasa jauh lebih mudah.
+    </p>
+  </div>
+
+  <!-- Konsep Inti -->
+  <div class="materi-card">
+    <h2>🧪 Konsep Inti</h2>
+
+    <h3>1️⃣ Percobaan Acak</h3>
+
+    <h4>🔹 Definisi Formal</h4>
+    <p>Percobaan acak adalah suatu proses yang:</p>
+    <ul>
+      <li>Dapat diulang</li>
+      <li>Hasil akhirnya tidak dapat dipastikan sebelumnya</li>
+      <li>Memiliki himpunan hasil yang mungkin</li>
+    </ul>
+
+    <h4>🔹 Definisi Intuitif</h4>
+    <p>
+      Percobaan acak adalah “kegiatan yang hasilnya belum kita tahu,
+      tapi pilihan hasilnya sudah jelas.”
+    </p>
+
+    <h4>🔹 Contoh Sederhana</h4>
+    <ul>
+      <li>Melempar 1 koin</li>
+      <li>Melempar 1 dadu</li>
+      <li>Mengambil 1 kartu dari setumpuk kartu remi</li>
+    </ul>
+
+    <h4>🔹 Contoh Kehidupan Nyata</h4>
+    <ul>
+      <li>Datang ke kampus: macet atau tidak</li>
+      <li>Membuka aplikasi: error atau normal</li>
+      <li>Hasil ujian: lulus atau tidak</li>
+    </ul>
+
+    <p><strong>⚠️ Catatan Penting:</strong><br>
+      Ketidakpastian ≠ tanpa aturan.
+      Probabilitas justru mempelajari ketidakpastian secara terstruktur.
+    </p>
+  </div>
+
+  <!-- Ruang Sampel -->
+  <div class="materi-card">
+    <h3>2️⃣ Ruang Sampel (Sample Space)</h3>
+
+    <h4>🔹 Definisi Formal</h4>
+    <p>
+      Ruang sampel (S) adalah himpunan semua hasil yang mungkin
+      dari suatu percobaan acak.
+    </p>
+
+    <h4>🔹 Ruang Sampel Diskrit</h4>
+    <p><strong>📌 Ciri:</strong></p>
+    <ul>
+      <li>Hasil dapat dihitung satu per satu</li>
+      <li>Biasanya berupa bilangan cacah</li>
+    </ul>
+
+    <p><strong>🔹 Contoh:</strong><br>Lempar koin:</p>
+
+    <p><strong>🔹 Analogi:</strong><br>
+      Seperti menu makanan di kantin—pilihannya terbatas dan jelas.
+    </p>
+
+    <h4>🔹 Ruang Sampel Kontinu</h4>
+    <p><strong>📌 Ciri:</strong></p>
+    <ul>
+      <li>Hasil berupa rentang nilai</li>
+      <li>Tidak bisa dihitung satu per satu</li>
+    </ul>
+
+    <p><strong>🔹 Contoh:</strong><br>Waktu tunggu bus:</p>
+
+    <p><strong>🔹 Analogi:</strong><br>
+      Seperti air di sungai—tidak bisa kita hitung satu per satu tetesnya.
+    </p>
+
+    <p><strong>⚠️ Kesalahan Umum:</strong><br>
+      Menganggap semua ruang sampel selalu diskrit.
+      Dalam praktik nyata, banyak yang kontinu.
+    </p>
+  </div>
+
+  <!-- Kejadian -->
+  <div class="materi-card">
+    <h3>3️⃣ Kejadian (Event)</h3>
+
+    <h4>🔹 Definisi Formal</h4>
+    <p>
+      Kejadian (A) adalah subset dari ruang sampel.<br>
+      Artinya: setiap kejadian pasti berasal dari ruang sampel.
+    </p>
+
+    <h4>🔹 Kejadian Sederhana</h4>
+    <p>Hanya satu hasil</p>
+    <p><strong>Contoh:</strong><br>
+      Lempar dadu, kejadian muncul angka 3
+    </p>
+
+    <h4>🔹 Kejadian Majemuk</h4>
+    <p>Lebih dari satu hasil</p>
+    <p><strong>Contoh:</strong><br>
+      Muncul angka genap
+    </p>
+
+    <p><strong>🔹 Analogi:</strong><br>
+      Kejadian sederhana → satu rumah<br>
+      Kejadian majemuk → satu komplek perumahan
+    </p>
+  </div>
+
+  <!-- Operasi Kejadian -->
+  <div class="materi-card">
+    <h3>4️⃣ Operasi Kejadian</h3>
+    <p>Misalkan ada dua kejadian: A dan B</p>
+    <ul>
+      <li>🔹 Gabungan (Union)</li>
+      <li>🔹 Irisan (Intersection)</li>
+      <li>🔹 Komplemen</li>
+    </ul>
+
+    <p><strong>⚠️ Kesalahan Umum:</strong><br>
+      Kata “atau” dalam probabilitas tidak eksklusif (bisa keduanya).
+    </p>
+  </div>
+
+  <!-- Diagram Venn -->
+  <div class="materi-card">
+    <h3>5️⃣ Diagram Venn</h3>
+    <p>
+      Diagram Venn adalah alat visual untuk memahami hubungan antar kejadian.
+    </p>
+
+    <p><strong>🔹 Kegunaan:</strong></p>
+    <ul>
+      <li>Memvisualkan gabungan, irisan, dan komplemen</li>
+      <li>Membantu berpikir logis sebelum menghitung</li>
+    </ul>
+
+    <p><strong>🔹 Analogi:</strong><br>
+      Seperti peta wilayah—kita tahu mana daerah sendiri,
+      mana yang tumpang tindih.
+    </p>
+  </div>
+
+  <!-- Highlight -->
+  <div class="materi-card highlight">
+    <h3>⭐ Catatan Penting</h3>
+    <ul>
+      <li>Ruang sampel = semesta pembicaraan</li>
+      <li>Kejadian = bagian dari ruang sampel</li>
+      <li>Semua perhitungan probabilitas berawal dari sini</li>
+      <li>Diagram Venn membantu menghindari kesalahan logika</li>
+    </ul>
+  </div>
+
+  <!-- Ringkasan -->
+  <div class="materi-card">
+    <h3>📝 Ringkasan & Kesimpulan</h3>
+
+    <h4>🔹 Poin-Poin Utama</h4>
+    <ul>
+      <li>Percobaan acak → proses dengan hasil tak pasti</li>
+      <li>Ruang sampel → semua hasil yang mungkin</li>
+      <li>Ruang sampel: diskrit & kontinu</li>
+      <li>Kejadian: sederhana & majemuk</li>
+      <li>Operasi kejadian: gabungan, irisan, komplemen</li>
+      <li>Diagram Venn → representasi visual kejadian</li>
+    </ul>
+
+    <h4>🔹 Intisari</h4>
+    <p>
+      Probabilitas selalu dimulai dari percobaan acak yang menghasilkan ruang sampel.
+      Kejadian adalah bagian dari ruang sampel yang dapat dimanipulasi dengan operasi matematika.
+      Pemahaman konseptual yang kuat di tahap ini adalah kunci sukses mempelajari probabilitas lanjutan.
+    </p>
+  </div>
+
+</section>
+  
+<!-- ===== NAVIGASI BAWAH ===== -->
+ <section class="materi">
+     <!-- semua .materi-card SELESAI di sini -->
+ </section>
+
+  <section class="nav-bawah">
+      <a href="../index.html" class="menu-btn">Beranda</a>
+      <a href="ruang-sampel.html" class="menu-btn">Materi Selanjutnya</a>
+  </section>
+
+<!-- ============ FOOTER ============ -->
+ <footer id="footer">
+  <p>© 2026 – Materi Pengantar Probabilitas</p>
+  <small>
+    Design & Content by <strong>VINA KHUSNA</strong> • Built with ❤️ using HTML & CSS | Hosted on GitHub Pages
+  </small>
+</footer>
+
+<a href="#top" id="backToTop" class="back-to-top">⬆</a>
+
+<!-- BACK TO TOP -->
+<script>
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTop.classList.toggle("show", window.scrollY > 300);
+});
+</script>
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  const footer = document.getElementById("footer");
+
+  window.addEventListener("scroll", () => {
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (footerRect.top < windowHeight) {
+            // footer mulai terlihat
+            backToTopBtn.style.position = "absolute";
+            backToTopBtn.style.bottom =
+                    footer.offsetHeight + 20 + "px";
+      } else {
+            // normal
+            backToTopBtn.style.position = "fixed";
+            backToTopBtn.style.bottom = "30px";
+      }
+  });
+</script>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kejadian Gabungan</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+  <div class="logo">
+    <span class="brand">Vynara 🌿</span>
+    <span class="tagline">Crescens Anima</span>
+  </div>
+</header>
+
+<main class="materi halaman-materi">
+
+<!-- JUDUL -->
+<section class="judul-card">
+  <h1>Kejadian Gabungan dalam Probabilitas</h1>
+  <p>
+    Materi ini membahas bagaimana dua atau lebih kejadian dapat
+    berinteraksi serta bagaimana menghitung peluangnya secara logis
+    menggunakan aturan penjumlahan dan perkalian.
+  </p>
+</section>
+
+<!-- PENDAHULUAN -->
+<section class="materi-subcard">
+  <h2>📘 Pendahuluan Singkat</h2>
+  <p>
+    Dalam kehidupan sehari-hari, kita sering bertanya tentang peluang
+    beberapa kejadian terjadi sekaligus — seperti peluang lulus dan
+    mendapat nilai A, atau kemungkinan hujan dan macet.
+  </p>
+  <p>
+    Semua pertanyaan tersebut berkaitan dengan <strong>kejadian gabungan</strong>.
+  </p>
+</section>
+
+<!-- TUJUAN -->
+<section class="materi-subcard highlight">
+  <h2>🎯 Tujuan Pembelajaran</h2>
+  <ul>
+    <li>Memahami probabilitas dua kejadian atau lebih</li>
+    <li>Membedakan kejadian saling lepas dan tidak saling lepas</li>
+    <li>Menggunakan aturan penjumlahan dan perkalian dengan benar</li>
+    <li>Menghindari kesalahan klasik dalam probabilitas</li>
+  </ul>
+</section>
+
+<!-- PENJUMLAHAN -->
+<section class="materi-subcard">
+  <h2>1️⃣ Aturan Penjumlahan (Addition Rule)</h2>
+  <p>
+    Digunakan ketika kita ingin mengetahui peluang
+    <strong>“A atau B terjadi”</strong>.
+  </p>
+
+  <p class="rumus">
+    P(A ∪ B) = P(A) + P(B) − P(A ∩ B)
+  </p>
+
+  <p>
+    Kita menjumlahkan probabilitas lalu mengurangi bagian yang
+    terhitung dua kali.
+  </p>
+</section>
+
+<!-- SALING LEPAS -->
+<section class="materi-subcard soft">
+  <h2>✳️ Kejadian Saling Lepas</h2>
+  <p>
+    Dua kejadian yang tidak mungkin terjadi bersamaan.
+  </p>
+
+  <p class="rumus">
+    P(A ∪ B) = P(A) + P(B)
+  </p>
+
+  <p>
+    Contoh: Saat melempar dadu, angka 2 dan angka 5
+    tidak mungkin muncul bersamaan.
+  </p>
+</section>
+
+<!-- TIDAK SALING LEPAS -->
+<section class="materi-subcard">
+  <h2>✳️ Kejadian Tidak Saling Lepas</h2>
+  <p>
+    Kedua kejadian bisa terjadi bersamaan, sehingga bagian irisan
+    harus dikurangi.
+  </p>
+
+  <p>
+    Contoh klasik adalah kartu merah dan kartu King —
+    terdapat King berwarna merah.
+  </p>
+</section>
+
+<!-- KESALAHAN -->
+<section class="materi-subcard warning">
+  <h2>⚠️ Kesalahan Paling Umum</h2>
+  <p>
+    Banyak mahasiswa langsung menjumlahkan probabilitas tanpa
+    mengurangi irisan.
+  </p>
+
+  <strong>Selalu tanyakan:</strong>
+  <p><em>“Apakah kedua kejadian bisa terjadi bersamaan?”</em></p>
+</section>
+
+<!-- PERKALIAN -->
+<section class="materi-subcard">
+  <h2>🔗 Aturan Perkalian (Multiplication Rule)</h2>
+  <p>
+    Digunakan untuk menghitung peluang
+    <strong>“A dan B terjadi”</strong>.
+  </p>
+
+  <p class="rumus">
+    P(A ∩ B) = P(A) × P(B|A)
+  </p>
+</section>
+
+<!-- INDEPENDEN -->
+<section class="materi-subcard highlight">
+  <h2>🔥 Kejadian Independen</h2>
+  <p>
+    Jika dua kejadian tidak saling memengaruhi:
+  </p>
+
+  <p class="rumus">
+    P(A ∩ B) = P(A) × P(B)
+  </p>
+
+  <p>
+    Contoh: Melempar koin dua kali.
+  </p>
+</section>
+
+<!-- IDE KUNCI -->
+<section class="materi-subcard penutup">
+  <h2>⭐ Ide Kunci</h2>
+  <ul>
+    <li>ATAU → gunakan penjumlahan</li>
+    <li>DAN → gunakan perkalian</li>
+    <li>Tanyakan apakah kejadian bisa bersamaan</li>
+    <li>Pahami konteks sebelum menghitung</li>
+  </ul>
+</section>
+
+<!-- RINGKASAN -->
+<section class="materi-subcard">
+  <h2>🧾 Ringkasan</h2>
+  <p>
+    Probabilitas gabungan membantu kita memahami hubungan antar kejadian.
+    Keberhasilan bukan terletak pada menghafal rumus,
+    tetapi pada kemampuan mengidentifikasi hubungan sebelum menghitung.
+  </p>
+
+  <p><strong>
+    Dalam probabilitas, memahami hubungan kejadian lebih penting
+    daripada langsung melakukan perhitungan.
+  </strong></p>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 – Materi Pengantar Probabilitas</p>
+  <small>
+    Design & Content by <strong>VINA KHUSNA</strong> • Built with ❤️ using HTML & CSS | Hosted on GitHub Pages
+  </small>
+</footer>
+
+</body>
+</html>

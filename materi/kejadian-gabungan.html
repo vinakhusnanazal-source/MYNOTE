@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kejadian Gabungan</title>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pengantar Probabilitas & Ketidakpastian</title>
+  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
 
-  <link rel="stylesheet" href="style.css">
-</head>
+<body id="top">
 
-<body>
-
-<!-- HEADER -->
-<header class="navbar">
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
   <div class="logo">
-    <span class="brand">Vynara 🌿</span>
-    <span class="tagline">Crescens Anima</span>
+      <span class="brand">Vynara 🌿</span>
+      <span class="tagline">Crescens Anima</span>
   </div>
-</header>
+
+   <div class="nav-action">
+    <a href="../index.html" class="menu-btn">≡ Daftar Materi</a>
+  </div>
+</nav>
 
 <main class="materi halaman-materi">
 
@@ -172,13 +177,50 @@
 
 </main>
 
-<!-- FOOTER -->
-<footer>
+<!-- ===== NAVIGASI BAWAH ===== -->
+ <section class="materi">
+     <!-- semua .materi-card SELESAI di sini -->
+ </section>
+
+  <section class="nav-bawah">
+      <a href="../index.html" class="menu-btn">Beranda</a>
+      <a href="ruang-sampel.html" class="menu-btn">Materi Selanjutnya</a>
+  </section>
+
+ <!-- ============ FOOTER ============ -->
+ <footer id="footer">
   <p>© 2026 – Materi Pengantar Probabilitas</p>
   <small>
     Design & Content by <strong>VINA KHUSNA</strong> • Built with ❤️ using HTML & CSS | Hosted on GitHub Pages
   </small>
 </footer>
 
-</body>
-</html>
+<a href="#top" id="backToTop" class="back-to-top">⬆</a>
+
+<!-- BACK TO TOP -->
+<script>
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTop.classList.toggle("show", window.scrollY > 300);
+});
+</script>
+<script>
+  const backToTopBtn = document.getElementById("backToTop");
+  const footer = document.getElementById("footer");
+
+  window.addEventListener("scroll", () => {
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (footerRect.top < windowHeight) {
+            // footer mulai terlihat
+            backToTopBtn.style.position = "absolute";
+            backToTopBtn.style.bottom =
+                    footer.offsetHeight + 20 + "px";
+      } else {
+            // normal
+            backToTopBtn.style.position = "fixed";
+            backToTopBtn.style.bottom = "30px";
+      }
+  });
+        </script>

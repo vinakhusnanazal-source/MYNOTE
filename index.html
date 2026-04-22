@@ -1,212 +1,584 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengantar Probabilitas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB VIII – Limas | Geometri Ruang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --surface: #fffdf8;
+  --surface2: #f0ebe0;
+  --border: #d8cfc0;
+  --text: #1a1410;
+  --text2: #5a4e3e;
+  --text3: #8a7a6a;
+  --accent: #c05a2a;
+  --accent2: #2a6a8a;
+  --accent3: #4a8a5a;
+  --gold: #b8860b;
+  --card-shadow: 0 2px 20px rgba(90,60,20,0.08);
+  --card-shadow-hover: 0 8px 32px rgba(90,60,20,0.15);
+  --radius: 12px;
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="dark"] {
+  --bg: #0e0c0a;
+  --surface: #1a1612;
+  --surface2: #24201a;
+  --border: #3a3028;
+  --text: #f0ebe0;
+  --text2: #b0a090;
+  --text3: #706050;
+  --accent: #e07840;
+  --accent2: #4a9aba;
+  --accent3: #6aaa7a;
+  --gold: #d4a820;
+  --card-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+}
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+/* NAVBAR */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+  box-shadow: 0 1px 12px rgba(90,60,20,0.07);
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.nav-links { display: flex; gap: 0.25rem; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  transition: all var(--transition);
+}
+.nav-links a:hover { background: var(--surface2); color: var(--accent); }
+.dark-toggle {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text2);
+  transition: all var(--transition);
+  font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.dark-toggle:hover { background: var(--border); color: var(--text); }
 
-  <link rel="stylesheet" href="style.css">
+/* HERO */
+.hero {
+  padding: 5rem 1.5rem 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero h1 em { color: var(--accent); font-style: italic; }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text2);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+.hero-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* MAIN LAYOUT */
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+/* SECTION CARDS */
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition);
+}
+.section-card:hover { box-shadow: var(--card-shadow-hover); }
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 1.6rem;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition), background var(--transition);
+}
+.section-header:hover { background: var(--surface2); }
+.section-header.open { border-bottom-color: var(--border); }
+.section-header-left { display: flex; align-items: center; gap: 1rem; }
+.section-num {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+}
+.section-num.blue { background: var(--accent2); }
+.section-num.green { background: var(--accent3); }
+.section-num.gold { background: var(--gold); }
+.section-num.dark { background: var(--text3); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.section-subtitle { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
+.chevron {
+  font-size: 0.8rem; color: var(--text3);
+  transition: transform var(--transition);
+}
+.chevron.open { transform: rotate(180deg); }
+.section-body {
+  padding: 1.6rem;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.section-body.open { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* TYPOGRAPHY */
+h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--accent); margin-bottom: 0.6rem; margin-top: 1.2rem; }
+h3:first-child { margin-top: 0; }
+p { color: var(--text2); margin-bottom: 0.75rem; font-size: 0.95rem; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text); font-weight: 600; }
+
+/* DEFINITION BOX */
+.defbox {
+  border-left: 3px solid var(--accent);
+  background: var(--surface2);
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.defbox .label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.defbox.theorem { border-left-color: var(--accent2); }
+.defbox.theorem .label { color: var(--accent2); }
+.defbox.axiom { border-left-color: var(--accent3); }
+.defbox.axiom .label { color: var(--accent3); }
+.defbox.warning { border-left-color: #c04040; }
+.defbox.warning .label { color: #c04040; }
+
+/* INFO GRID */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+@media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+.info-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-size: 0.88rem;
+}
+.info-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); font-weight: 600; margin-bottom: 0.3rem; }
+.info-value { color: var(--text); font-weight: 500; }
+
+/* PROOF TABLE */
+.proof-table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: 8px; border: 1px solid var(--border); }
+table.proof {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.875rem;
+}
+table.proof thead th {
+  background: var(--accent);
+  color: white;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+table.proof thead th:first-child { width: 40%; }
+table.proof tbody tr { border-bottom: 1px solid var(--border); transition: background var(--transition); }
+table.proof tbody tr:last-child { border-bottom: none; }
+table.proof tbody tr:hover { background: var(--surface2); }
+table.proof td { padding: 0.7rem 1rem; color: var(--text2); vertical-align: top; line-height: 1.5; }
+table.proof td:first-child { color: var(--text); font-weight: 500; }
+table.proof .step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text3);
+  font-family: 'DM Mono', monospace;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+table.proof td .cell-inner { display: flex; align-items: flex-start; }
+
+/* SVG VISUALIZATION */
+.viz-wrap {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+.viz-caption { font-size: 0.8rem; color: var(--text3); margin-top: 0.8rem; font-style: italic; }
+svg text { font-family: 'DM Sans', sans-serif; }
+
+/* ACCORDION TABS */
+.tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.tab-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text2);
+  font-family: 'DM Sans', sans-serif;
+  transition: all var(--transition);
+}
+.tab-btn:hover, .tab-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.25s ease; }
+
+/* TYPE CARDS */
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+@media (max-width: 600px) { .type-grid { grid-template-columns: 1fr; } }
+.type-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  background: var(--surface2);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.type-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+.type-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+.type-card:nth-child(2)::before { background: var(--accent2); }
+.type-card:nth-child(3)::before { background: var(--accent3); }
+.type-card:nth-child(4)::before { background: var(--gold); }
+.type-card-title { font-weight: 700; color: var(--text); font-size: 0.9rem; margin-bottom: 0.4rem; }
+.type-card-body { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
+
+/* MATH INLINE */
+.math {
+  font-family: 'DM Mono', monospace;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.88em;
+  color: var(--accent2);
+}
+.math-block {
+  font-family: 'DM Mono', monospace;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  padding: 0.8rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  color: var(--accent2);
+  margin: 0.8rem 0;
+}
+
+/* EXERCISE */
+.exercise {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  counter-increment: exercise;
+}
+.ex-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.ex-body { color: var(--text); font-size: 0.92rem; }
+.sub-list { list-style: lower-alpha; padding-left: 1.5rem; margin-top: 0.5rem; }
+.sub-list li { color: var(--text2); font-size: 0.88rem; margin-bottom: 0.3rem; }
+.show-hint-btn {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all var(--transition);
+}
+.show-hint-btn:hover { background: var(--accent2); color: white; }
+.hint-box {
+  display: none;
+  margin-top: 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--accent2);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text2);
+  animation: fadeIn 0.3s ease;
+}
+
+/* INSIGHT CHIPS */
+.insights { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+.insight-chip {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text2);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.insight-chip .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text3);
+  font-size: 0.82rem;
+}
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* INTERACTIVE SVG */
+.svg-interactive { cursor: default; }
+.svg-interactive .highlight-label { opacity: 0; transition: opacity 0.3s; }
+.svg-interactive:hover .highlight-label { opacity: 1; }
+
+/* Progress Bar */
+.progress-bar-wrap {
+  background: var(--surface2);
+  border-radius: 20px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 20px;
+  transition: width 0.6s ease;
+  width: 0%;
+}
+
+@media (max-width: 600px) {
+  .nav-links a:not(.keep) { display: none; }
+  .hero { padding: 3rem 1.2rem 2rem; }
+  .section-header { padding: 1rem 1.2rem; }
+  .section-body { padding: 1.2rem; }
+  table.proof thead th, table.proof td { padding: 0.6rem 0.75rem; }
+}
+</style>
 </head>
+<body>
 
-<body id="top">
-
-<!-- ============ NAVBAR ============ -->
-<nav class="navbar">
-  <div class="logo">
-    <span class="brand">Vynara 🌿</span>
-    <span class="tagline">Crescens Anima</span>
-  </div>
-<div class="menu-wrapper">
-    <button class="menu-btn" id="menuBtn">≡ Materi</button>
-
-    <div class="dropdown-content" id="dropdownMenu">
-          <a href="#m1">Pengantar & Ketidakpastian</a>
-          <a href="#m2">Ruang Sampel & Kejadian</a>
-          <a href="#m3">Aksioma Probabilitas</a>
-          <a href="#m4">Kejadian Gabungan</a>
-          <a href="#m5">Probabilitas Bersyarat</a>
-          <a href="#m6">Teorema Bayes</a>
-          <a href="#m7">Review & Latihan</a>
-          <a href="#m8">Variabel Acak Diskrit</a>
-          <a href="#m9">Distribusi Diskrit</a>
-          <a href="#m10">Variabel Acak Kontinu</a>
-          <a href="#m11">Nilai Harapan</a>
-          <a href="#m12">Varians & Simpangan Baku</a>
-          <a href="#m13">Review Akhir</a>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">Geometri Ruang · BAB VIII</div>
+  <div style="display:flex;align-items:center;gap:0.5rem;">
+    <div class="nav-links">
+      <a href="#materi">Materi</a>
+      <a href="#latihan">Latihan</a>
+      <a href="#tentang">Tentang</a>
     </div>
-</div>
+    <button class="dark-toggle" id="darkToggle">🌙 Gelap</button>
+  </div>
 </nav>
-  
-<!-- ============ HERO ============ -->
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-card">
-    <h1>PENGANTAR PROBABILITAS</h1>
-    <p>
-      Mata kuliah dasar yang membekali mahasiswa dengan pemahaman konsep dan metode untuk menganalisis ketidakpastian serta menghitung peluang suatu kejadian secara sistematis. Materi ini menjadi fondasi penting bagi pengambilan keputusan dan pengembangan ilmu lanjutan seperti statistika dan analisis data.
-    </p>
-  </div>
+  <div class="hero-tag">BAB VIII · Geometri Ruang</div>
+  <h1><em>Limas</em> — Bangun Ruang<br>Berujung Satu Puncak</h1>
+  <p class="hero-sub">Dari definisi formal hingga pembuktian deduktif — pahami Limas Sembarang, Beraturan, Terpancung, dan Bidang-Empat secara mendalam.</p>
+  <div class="hero-divider"></div>
 </section>
 
-<!-- ============ MATERI (UTUH) ============ -->
-<section class="materi">
-<a href="materi/pengantar.html" class="materi-link">
-  <div class="materi-card" id="m1">
-    <h2>Pengantar Probabilitas dan Konsep Ketidakpastian</h2>
+<!-- PROGRESS -->
+<div class="container">
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
-<a href="materi/ruang-sampel.html" class="materi-link">
-  <div class="materi-card" id="m2">
-    <h2>Ruang Sampel dan Kejadian</h2>
+  <!-- ── SECTION A: PEMAHAMAN MASALAH ── -->
+  <div id="materi"></div>
+  <div class="section-card reveal" id="sec-a">
+    <div class="section-header" onclick="toggleSection('a')">
+      <div class="section-header-left">
+        <div class="section-num">A</div>
+        <div>
+          <div class="section-title">Pemahaman Masalah</div>
+          <div class="section-subtitle">Apa itu limas? Objek geometri apa yang terlibat?</div>
+        </div>
+      </div>
+      <span class="chevron" id="chev-a">▼</span>
+    </div>
+    <div class="section-body open" id="body-a">
+      <div class="defbox">
+        <div class="label">Definisi Limas</div>
+        Limas adalah bangun ruang yang dibatasi oleh <strong>sebuah segi-n</strong> (sebagai bidang dasar) dan <strong>bidang-bidang sisi tegak</strong> berbentuk segitiga yang alasnya sisi-sisi segi-n tersebut dan puncaknya berimpit pada satu titik.
+      </div>
+
+      <h3>Objek Geometri pada Limas T.ABCD</h3>
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">Puncak</div><div class="info-value">T — titik tunggal di atas bidang dasar</div></div>
+        <div class="info-item"><div class="info-label">Bidang Alas</div><div class="info-value">ABCD — segi-n yang menjadi dasar</div></div>
+        <div class="info-item"><div class="info-label">Sisi-Sisi Tegak</div><div class="info-value">△TAB, △TBC, △TCD, △TDA</div></div>
+        <div class="info-item"><div class="info-label">Rusuk Alas</div><div class="info-value">AB, BC, CD, DA</div></div>
+        <div class="info-item"><div class="info-label">Rusuk Tegak</div><div class="info-value">TA, TB, TC, TD</div></div>
+        <div class="info-item"><div class="info-label">Bidang Diagonal</div><div class="info-value">TAC dan TBD</div></div>
+      </div>
+
+      <h3>Garis Tinggi Limas</h3>
+      <p>Jika <strong>TT' ⊥ bidang alas ABCD</strong> (dengan T' berada di bidang alas), maka TT' disebut <strong>garis tinggi</strong> limas. Titik T' adalah <em>titik kaki</em> garis tinggi. Panjang ruas garis TT' merupakan <strong>tinggi limas</strong>.</p>
+
+      <div class="viz-wrap">
+        <svg width="320" height="240" viewBox="0 0 320 240" class="svg-interactive" aria-label="Diagram Limas T.ABCD">
+          <!-- Alas -->
+          <polygon points="160,200 60,160 100,100 200,100 240,160" fill="rgba(192,90,42,0.08)" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <!-- Sisi tegak -->
+          <polygon points="160,30 60,160 100,100" fill="rgba(42,106,138,0.08)" stroke="var(--accent2)" stroke-width="1.5"/>
+          <polygon points="160,30 100,100 200,100" fill="rgba(74,138,90,0.08)" stroke="var(--accent3)" stroke-width="1.5"/>
+          <polygon points="160,30 200,100 240,160" fill="rgba(184,134,11,0.06)" stroke="var(--gold)" stroke-width="1.5"/>
+          <polygon points="160,30 240,160 160,200" fill="rgba(192,90,42,0.06)" stroke="var(--accent)" stroke-width="1.2"/>
+          <!-- Garis Tinggi -->
+          <line x1="160" y1="30" x2="155" y2="155" stroke="var(--text3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Titik kaki T' -->
+          <circle cx="155" cy="155" r="3" fill="var(--text3)"/>
+          <!-- Sudut siku -->
+          <rect x="155" y="148" width="8" height="8" fill="none" stroke="var(--text3)" stroke-width="1"/>
+          <!-- Label -->
+          <text x="155" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent)">T</text>
+          <text x="90" y="96" text-anchor="middle" font-size="12" fill="var(--text2)">A</text>
+          <text x="46" y="166" text-anchor="middle" font-size="12" fill="var(--text2)">B</text>
+          <text x="160" y="218" text-anchor="middle" font-size="12" fill="var(--text2)">C</text>
+          <text x="248" y="166" text-anchor="middle" font-size="12" fill="var(--text2)">D</text>
+          <text x="205" y="96" text-anchor="middle" font-size="12" fill="var(--text2)">E</text>
+          <text x="140" y="158" text-anchor="middle" font-size="11" fill="var(--text3)">T'</text>
+          <text x="174" y="100" text-anchor="start" font-size="10" fill="var(--text3)">tinggi</text>
+          <!-- Arrow -->
+          <line x1="173" y1="95" x2="162" y2="60" stroke="var(--text3)" stroke-width="1" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L6,3 z" fill="var(--text3)"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="viz-caption">Gambar 8.1 — Limas T.ABCD dengan garis tinggi TT'</div>
+      </div>
+    </div>
   </div>
 
-<a href="materi/aksioma.html" class="materi-link">
-  <div class="materi-card" id="m3">
-    <h2>Aksioma dan Sifat-Sifat Probabilitas</h2>
-  </div>
+  <!-- ── SECTION B: JENIS-JENIS LIMAS ── -->
+  <div class="section-card reveal" id="sec-b">
+    <div class="section-header" onclick="toggleSection('b')">
+      <div class="section-header-left">
+        <div class="section-num blue">B</div>
+        <div>
+          <div class="section-title">Jenis-Jenis Limas</div>
+          <div class="section-subtitle">Sembarang · Beraturan · Terpancung · Bidang-Empat</div>
+        </div>
+      </div>
+      <span class="chevron" id="chev-b">▼</span>
+    </div>
+    <div class="section-body open" id="body-b">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('limas','sembarang',this)">Sisi-n Sembarang</button>
+        <button class="tab-btn" onclick="showTab('limas','beraturan',this)">Sisi-n Beraturan</button>
+        <button class="tab-btn" onclick="showTab('limas','terpancung',this)">Terpancung</button>
+        <button class="tab-btn" onclick="showTab('limas','bidangempat',this)">Bidang-Empat</button>
+      </div>
 
-<a href="materi/kejadian-gabungan.html" class="materi-link">
-  <div class="materi-card" id="m4">
-    <h2>Aturan Probabilitas Kejadian Gabungan</h2>
-  </div>
-
-  <div class="materi-card" id="m5">
-    <h2>Probabilitas Bersyarat dan Independensi</h2>
-    <p>
-      Probabilitas bersyarat mengukur peluang suatu kejadian
-      dengan syarat kejadian lain telah terjadi.
-      Dua kejadian dikatakan independen jika tidak saling mempengaruhi.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m6">
-    <h2>Teorema Bayes dan Aplikasinya</h2>
-    <p>
-      Teorema Bayes digunakan untuk memperbarui probabilitas
-      berdasarkan informasi baru dan banyak diterapkan
-      dalam machine learning serta diagnosa medis.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m7">
-    <h2>Review dan Latihan Komprehensif</h2>
-    <p>
-      Bagian ini berisi rangkuman materi awal serta latihan
-      soal untuk memperkuat pemahaman konsep probabilitas dasar.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m8">
-    <h2>Variabel Acak Diskrit</h2>
-    <p>
-      Variabel acak diskrit memiliki nilai yang terhitung,
-      seperti jumlah keberhasilan dalam suatu percobaan.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m9">
-    <h2>Distribusi Probabilitas Diskrit</h2>
-    <p>
-      Distribusi probabilitas diskrit menggambarkan peluang
-      setiap nilai dari variabel acak diskrit.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m10">
-    <h2>Variabel Acak Kontinu dan Distribusinya</h2>
-    <p>
-      Variabel acak kontinu memiliki nilai dalam suatu interval,
-      contohnya waktu dan panjang.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m11">
-    <h2>Nilai Harapan Variabel Acak</h2>
-    <p>
-      Nilai harapan menunjukkan rata-rata teoretis dari
-      suatu variabel acak dalam jangka panjang.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m12">
-    <h2>Varians dan Simpangan Baku</h2>
-    <p>
-      Varians dan simpangan baku mengukur seberapa jauh
-      penyebaran data dari nilai harapannya.
-    </p>
-  </div>
-
-  <div class="materi-card" id="m13">
-    <h2>Review Akhir Mata Kuliah</h2>
-    <p>
-      Review akhir mencakup seluruh materi probabilitas
-      dan berfungsi sebagai persiapan evaluasi akhir.
-    </p>
-  </div>
-
-</section>
-
-<!-- ============ FOOTER ============ -->
- <footer id="footer">
-  <p>© 2026 – Materi Pengantar Probabilitas</p>
-  <small>
-    Design & Content by <strong>VINA KHUSNA</strong> • Built with ❤️ using HTML & CSS | Hosted on GitHub Pages
-  </small>
-</footer>
-
-<a href="#top" id="backToTop" class="back-to-top">⬆</a>
-
-<!-- BACK TO TOP -->
-<script>
-const backToTop = document.getElementById("backToTop");
-window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("show", window.scrollY > 300);
-});
-</script>
-<script>
-  const backToTopBtn = document.getElementById("backToTop");
-  const footer = document.getElementById("footer");
-
-  window.addEventListener("scroll", () => {
-      const footerRect = footer.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      if (footerRect.top < windowHeight) {
-            // footer mulai terlihat
-            backToTopBtn.style.position = "absolute";
-            backToTopBtn.style.bottom =
-                    footer.offsetHeight + 20 + "px";
-      } else {
-            // normal
-            backToTopBtn.style.position = "fixed";
-            backToTopBtn.style.bottom = "30px";
-      }
-  });
-</script>
-<!-- DROPDOWN SCRIPT (FINAL) -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("menuBtn");
-  const menu = document.getElementById("dropdownMenu");
-
-  btn.addEventListener("click", e => {
-    e.stopPropagation();
-    menu.classList.toggle("show");
-  });
-
-  menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("show");
-    });
-  });
-
-  document.addEventListener("click", () => {
-    menu.classList.remove("show");
-  });
-});
-</script>
-
-</body>
-</html>
+      <!-
